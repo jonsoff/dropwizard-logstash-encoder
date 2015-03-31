@@ -7,6 +7,7 @@ import ch.qos.logback.core.Layout;
 import ch.qos.logback.core.net.SyslogConstants;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import net.logstash.logback.appender.LogstashSocketAppender;
+import net.logstash.logback.stacktrace.ShortenedThrowableConverter;
 
 import java.io.IOException;
 
@@ -28,6 +29,9 @@ public class LogstashSocketAppenderFactory extends AbstractLogstashAppenderFacto
     appender.setIncludeCallerInfo(includeCallerInfo);
     appender.setIncludeMdc(includeMdc);
     appender.setIncludeContext(includeContext);
+
+    ShortenedThrowableConverter shortenedThrowableConverter = new ShortenedThrowableConverter();
+    appender.setThrowableConverter(shortenedThrowableConverter);
 
     if (customFields != null) {
       try {
