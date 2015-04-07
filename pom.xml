@@ -5,7 +5,7 @@
 
   <groupId>com.wikia</groupId>
   <artifactId>dropwizard-logstash-encoder-jre7</artifactId>
-  <version>1.1.0</version>
+  <version>1.1.1</version>
   <name>dropwizard-logstash-encoder</name>
   <description>
     Addon for dropwizard to log using the logback-logstash-encoder (see https://github.com/logstash/logstash-logback-encoder)
@@ -27,6 +27,12 @@
     </developer>
   </developers>
 
+  <properties>
+     <dropwizard.version>0.7.1</dropwizard.version>
+     <fasterxml-jackson.version>2.5.1</fasterxml-jackson.version>
+     <logstash-logback.version>4.2</logstash-logback.version>
+  </properties>
+
   <build>
     <plugins>
       <plugin>
@@ -42,42 +48,36 @@
   </build>
   <distributionManagement>
       <repository>
-          <id>SiOReleases</id>
-          <name>Internal Releases</name>
-          <url>http://byggserver:8081/nexus/content/repositories/SiOReleases</url>
+          <id>thirdparty</id>
+          <name>Third party Releases</name>
+          <url>http://byggserver:8081/nexus/content/repositories/thirdparty</url>
       </repository>
-      <snapshotRepository>
-          <id>SiOSnapshots</id>
-          <name>Internal Snapshots</name>
-          <url>http://byggserver:8081/nexus/content/repositories/SiOSnapshots</url>
-          <uniqueVersion>false</uniqueVersion>
-      </snapshotRepository>
   </distributionManagement>
   <dependencies>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-annotations</artifactId>
-      <version>2.4.0</version>
+      <version>${fasterxml-jackson.version}</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-core</artifactId>
-      <version>2.4.0</version>
+      <version>${fasterxml-jackson.version}</version>
     </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.4.0</version>
+      <version>${fasterxml-jackson.version}</version>
     </dependency>
     <dependency>
       <groupId>io.dropwizard</groupId>
       <artifactId>dropwizard-logging</artifactId>
-      <version>0.7.0</version>
+      <version>${dropwizard.version}</version>
     </dependency>
     <dependency>
       <groupId>net.logstash.logback</groupId>
       <artifactId>logstash-logback-encoder</artifactId>
-      <version>4.2</version>
+      <version>${logstash-logback.version}</version>
     </dependency>
   </dependencies>
 </project>
